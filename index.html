@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitten Krafts - Handmade by Defne</title>
+    <style>
+        :root {
+            --bg-dark: #f3e6ff;
+            --bg-card: #ffffff;
+            --text-primary: #424152;
+            --text-secondary: #6b6a86;
+            --accent-pink: #FF6B98;
+            --accent-purple: #8A63FF;
+            --accent-teal: #33D7DF;
+            --card-border: rgba(138, 99, 255, 0.15);
+            --gradient-bg: linear-gradient(135deg, #c6d6ff, #ffd6eb, #e6d0ff);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        header {
+            padding: 1.5rem 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon:before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: var(--bg-dark);
+            border-radius: 50%;
+            top: 8px;
+            left: 8px;
+        }
+        
+        .logo-icon:after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: var(--bg-dark);
+            border-radius: 50%;
+            top: 24px;
+            right: 8px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-pink);
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+            border: none;
+            border-radius: 1.5rem;
+            padding: 0.6rem 1.5rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+        
+        .hero {
+            padding: 6rem 0 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(138, 99, 255, 0.3) 0%, rgba(243, 230, 255, 0) 70%);
+            top: -200px;
+            left: -200px;
+            z-index: 0;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 152, 0.3) 0%, rgba(243, 230, 255, 0) 70%);
+            bottom: -200px;
+            right: -200px;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .new-badge {
+            display: inline-block;
+            background-color: rgba(138, 99, 255, 0.15);
+            border: 1px solid rgba(138, 99, 255, 0.3);
+            border-radius: 1rem;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-purple);
+        }
+        
+        .new-badge svg {
+            width: 14px;
+            height: 14px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight {
+            color: var(--accent-pink);
+        }
+        
+        .hero-description {
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .secondary-button {
+            background-color: rgba(138, 99, 255, 0.1);
+            border: 1px solid rgba(138, 99, 255, 0.2);
+            border-radius: 1.5rem;
+            padding: 0.6rem 1.5rem;
+            color: var(--accent-purple);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .secondary-button:hover {
+            background-color: rgba(138, 99, 255, 0.15);
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .kitten-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .floating-item {
+            position: absolute;
+            background-color: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .floating-item-1 {
+            top: -20px;
+            left: 20px;
+        }
+        
+        .floating-item-2 {
+            bottom: 30px;
+            right: 0;
+        }
+        
+        .floating-item-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .floating-item-text h3 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .floating-item-text p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .products {
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            display: inline-block;
+            background-color: rgba(51, 215, 223, 0.2);
+            color: var(--accent-teal);
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .product-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-pink);
+            margin-bottom: 1rem;
+        }
+        
+        .product-button {
+            width: 100%;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+        
+        .product-button:hover {
+            opacity: 0.9;
+        }
+        
+        .about {
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 1rem;
+            border: 1px solid var(--card-border);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .cta {
+            padding: 6rem 0;
+            position: relative;
+            text-align: center;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(198, 214, 255, 0.7), rgba(255, 214, 235, 0.7), rgba(230, 208, 255, 0.7));
+            z-index: 0;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+        
+        .cta-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .cta-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--card-border);
+            border-right: none;
+            border-radius: 1.5rem 0 0 1.5rem;
+            font-size: 1rem;
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            box-shadow: 0 4px 12px rgba(138, 99, 255, 0.1);
+        }
+        
+        .cta-input:focus {
+            outline: none;
+        }
+        
+        .cta-button-form {
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink));
+            border: none;
+            border-radius: 0 1.5rem 1.5rem 0;
+            padding: 1rem 1.5rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+        
+        .cta-button-form:hover {
+            opacity: 0.9;
+        }
+        
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid var(--card-border);
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-col {
+            min-width: 200px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-pink);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .section-title h2, .about-text h2, .cta h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <!-- Stylized cat paw shape created with CSS -->
+                    </div>
+                    <div class="logo-text">Kitten Krafts</div>
+                </div>
+                <div class="nav-links">
+                    <a href="#products">Products</a>
+                    <a href="#about">About Defne</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <button class="cta-button">Order Now</button>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="new-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#8A63FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                        </svg>
+                        New crafts added weekly!
+                    </div>
+                    <h1>Handmade crafts by a <span class="highlight">7-year-old</span> artist</h1>
+                    <p class="hero-description">Defne creates adorable handmade crafts with love and imagination. Each piece is unique, just like her! From colorful bracelets to painted rocks, discover the magic of childhood creativity.</p>
+                    <div class="hero-buttons">
+                        <button class="cta-button">Shop Collection</button>
+                        <button class="secondary-button">Learn More</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img class="kitten-image" src="Upper.png" alt="Cute unicorn kitten"
+                    style="object-fit: contain; background-color: rgba(255,255,255,0.7); padding: 20px;">
+                    <div class="floating-item floating-item-1">
+                        <div class="floating-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 8v4M12 16h.01"></path>
+                            </svg>
+                        </div>
+                        <div class="floating-item-text">
+                            <h3>Made with Love</h3>
+                            <p>Each craft is unique</p>
+                        </div>
+                    </div>
+                    <div class="floating-item floating-item-2">
+                        <div class="floating-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <div class="floating-item-text">
+                            <h3>Kitten Approved</h3>
+                            <p>Safe and adorable</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Defne's Creations</h2>
+                <p>Browse through Defne's handmade crafts. Each item is made with care and imagination!</p>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img class="product-image" src="friendship-bracelet.png" alt="Friendship Bracelet">
+                    <div class="product-info">
+                        <span class="product-category">Jewelry</span>
+                        <h3 class="product-title">Friendship Bracelet</h3>
+                        <p class="product-description">Colorful handmade bracelet with beads and charms. Perfect gift for a best friend!</p>
+                        <div class="product-price">$5.99</div>
+                        <button class="product-button">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img class="product-image" src="painted-rock.png" alt="Painted Rock">
+                    <div class="product-info">
+                        <span class="product-category">Art</span>
+                        <h3 class="product-title">Kitten Painted Rock</h3>
+                        <p class="product-description">Hand-painted rock featuring an adorable kitten design. Perfect for garden decoration.</p>
+                        <div class="product-price">$7.99</div>
+                        <button class="product-button">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img class="product-image" src="paper-card.png" alt="Paper Card">
+                    <div class="product-info">
+                        <span class="product-category">Paper Crafts</span>
+                        <h3 class="product-title">Greeting Card</h3>
+                        <p class="product-description">Handmade greeting card with colorful drawings and a special message inside.</p>
+                        <div class="product-price">$3.99</div>
+                        <button class="product-button">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img class="product-image" src="pom-pom-kitty.png" alt="Pom-pom Kitty">
+                    <div class="product-info">
+                        <span class="product-category">Plushies</span>
+                        <h3 class="product-title">Pom-pom Kitty</h3>
+                        <p class="product-description">Adorable yarn pom-pom kitten with felt ears and googly eyes. So fluffy!</p>
+                        <div class="product-price">$6.99</div>
+                        <button class="product-button">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="Flames.png" alt="Defne crafting">
+                </div>
+                <div class="about-text">
+                    <h2>Meet <span class="highlight">Defne</span>, the 7-year-old Artist</h2>
+                    <p>Hi! I'm Defne and I'm 7 years old. I love making crafts and playing with my brother, Demir. My favorite subjects in school are art and science.I also love playing piano and drawing.</p>
+                    <p>I started making crafts when I was 2, and my mom and dad say I'm really creative! I love using bright colors and making things that make people smile.</p>
+                    <p>Each craft I make is special and different. I hope you like them as much as I like making them!</p>
+                    <button class="cta-button">Read Defne's Story</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Want to order a <span class="highlight">custom craft</span>?</h2>
+                <p>Defne can make special crafts just for you! Fill out the form below and we'll get back to you with details. Custom orders make great gifts!</p>
+                <form class="cta-form">
+                    <input type="email" placeholder="Enter your email" class="cta-input" required>
+                    <button type="submit" class="cta-button-form">Get in Touch</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="logo">
+                        <div class="logo-icon"></div>
+                        <div class="logo-text">Kitten Krafts</div>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-top: 1.5rem;">Handmade crafts by Defne, a 7-year-old artist who loves kittens and creativity!</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">All Products</a></li>
+                        <li><a href="#">Jewelry</a></li>
+                        <li><a href="#">Art</a></li>
+                        <li><a href="#">Paper Crafts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Defne's Story</a></li>
+                        <li><a href="#">Our Process</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Email Us</a></li>
+                        <li><a href="#">Custom Orders</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Kitten Krafts. All products handmade by Defne with parental supervision.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
